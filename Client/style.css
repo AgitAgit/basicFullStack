@@ -1,0 +1,22 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    height: 100vh;
+    background-color: rgb(83, 81, 81);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+#display-form{
+    
+    /* background-color: bisque; */
+}
+
+#add-form{
+    /* background-color: black; */
+}
