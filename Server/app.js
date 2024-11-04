@@ -1,12 +1,9 @@
 import express, {json} from 'express';
-import fs from 'fs';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-// import { assert } from 'console';
 
 import jokesRouter from './routes/jokesRoute.js';
 import usersRouter from './routes/usersRoute.js';
-import productsRouter from './routes/productsRoute.js';
 
 import logger from './middleware/logger.js';
 
@@ -30,8 +27,6 @@ app.use('/', logger);
 
 app.use('/api/jokes', jokesRouter);
 app.use('/api/users', usersRouter);
-app.use('/api/products', productsRouter);
-
 
 app.get("/", (req, res) => {
     // res.send("Hello World");

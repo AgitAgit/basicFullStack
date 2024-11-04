@@ -6,14 +6,14 @@ import { getJoke, getJokes, getIdsByContent, addJoke, getJokesWithCreator } from
 const router = express.Router();
 
 
-// router.get('/:id', getJoke, (req, res) =>{
-//     try{
-//         res.json(res.joke);
-//     }
-//     catch (error){
-//         next(error);
-//     }
-// });
+router.get('/byid/:id', getJoke, (req, res) =>{
+    try{
+        res.json(res.joke);
+    }
+    catch (error){
+        next(error);
+    }
+});
 
 router.get('/', getJokes, (req, res) => {
     try{
@@ -73,7 +73,6 @@ router.delete('/bycontent', getIdsByContent, async (req, res) =>{
 });
 
 router.use((err, req, res, next) => {
-    // console.error(err);
     console.log("there was an error...");
     res.status(500).json({ message: "something went wrong in the server..."});
 });
