@@ -1,6 +1,7 @@
 import express, {json} from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 import jokesRouter from './routes/jokesRoute.js';
 import usersRouter from './routes/usersRoute.js';
