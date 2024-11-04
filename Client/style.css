@@ -6,17 +6,26 @@
 
 body{
     height: 100vh;
-    background-color: rgb(83, 81, 81);
-    display: flex;
+    background-color: rgb(106, 105, 105);
+    /* display: flex;
     justify-content: center;
     flex-direction: column;
-    align-items: center;
-}
-#display-form{
-    
-    /* background-color: bisque; */
+    align-items: center; */
 }
 
+.form{
+    margin-top: 1rem;
+      display: flex;
+    justify-content: center;
+    align-items: center; 
+}
 #add-form{
-    /* background-color: black; */
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+.jokes-conrainer{
+    margin-top: 1rem;
+    text-align: center;
 }

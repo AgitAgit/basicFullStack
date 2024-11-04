@@ -1,8 +1,8 @@
-const serverAddress = 'http://localhost:3000';
+const serverAddress = "http://localhost:3000";
 
-export const getJokes = async function(){
-    const jokes = await fetch(`${serverAddress}/api/jokes`);
-    console.log(jokes);
+export const getJokes = async function () {
+  const jokes = await fetch(`${serverAddress}/api/jokes`);
+  console.log(jokes);
 
-    return jokes;
-}
+  return jokes;
+};
