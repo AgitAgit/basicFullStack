@@ -10,3 +10,11 @@ export const getJokes = async function(){
 
     return jokes;
 }
+
+export const deleteJoke = async function(id){
+    const result = await axios.delete(`${serverAddress}/api/jokes/byId/${id}`);
+    
+    // const jsonResult = await result.json();
+
+    console.log("result:", result);
+}
