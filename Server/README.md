@@ -1,8 +1,9 @@
 # practice2 api project
 
-## Jokes api:
-
-## Users api:
+## Jokes api:not up to date
+last updated:
+## Users api:not up to date
+last updated:2024-11-03?
 
 base route: /api/users
 
