@@ -9,3 +9,5 @@ const elPunchLineInput = document.querySelector(".punchline");
 const elCreateBtn = document.querySelector(".create-btn");
 
 const elForm = document.getElementById("add-form");
+
+const renderJokes = () => {};
