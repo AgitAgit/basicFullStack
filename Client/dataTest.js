@@ -1,15 +1,15 @@
-import { getJokes, deleteJoke } from './dataCenter.js';
+import { getJokes, deleteJoke, addJoke } from './dataCenter.js';
 
 //67234ab370fe1388b302eb6b buffalo joke id
 
-const data = await getJokes(); 
+let data = await getJokes(); 
 
-console.log("jokes", data);
+console.log(data);
 
-const result = await deleteJoke('67234ab370fe1388b302eb6b');
+let result = await addJoke('testing client add joke 1','testing client add joke 1');
 
-console.log("result:", result);
+console.log(result);
 
-const data2 = await getJokes(); 
+data = await getJokes(); 
 
-console.log("jokes", data);
+console.log(data);
