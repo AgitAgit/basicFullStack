@@ -7,19 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-<form id="display-form">
-<div class="jokes-container">
-    BLA BLA BVLA
+<div class="form">
+        <form id="add-form">
+            <h1>Create your joke</h1>
+            <p class="title">Setup</p>
+            <input type="text" placeholder="type setup">
+            <p class="title">Punchline</p>
+            <input type="text" placeholder="type punchline">
+            <button class="send">Create</button>
+        </form>
 </div>
-</form>
-<form id="add-form">
-    <h1>Create your joke</h1>
-<p class="title">Setup</p>
-<input type="text" placeholder="type setup">
-<p class="title">Punchline</p>
-<input type="text" placeholder="type punchline">
-<button class="send">Create</button>
-</form>
+
+    <div class="jokes-container">
+        BLA BLA BVLA
+    </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     
     <script type="module" src="./main.js"></script>
