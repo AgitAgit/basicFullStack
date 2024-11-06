@@ -49,3 +49,13 @@ export const addUser = async function(user){
         console.log('from dataTest', error);
     }
 }
+
+export const isValidUser = async function(user){
+    try{
+        const reply = await axios.post(`${serverAddress}/api/users/validate`, { user:user });
+        console.log("validation reply:", reply.data, "User:", user);
+        return reply.data.isValid;
+    } catch(error){
+        console.log(error);
+    }
+}

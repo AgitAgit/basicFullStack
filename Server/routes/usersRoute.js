@@ -20,8 +20,7 @@ router.post('/many', addUsers);
 //sends back an object of the form { isValid:true/false }
 router.post('/validate', validateLogin);
 
-router.patch('/', patchUser,(req, res) => {
-})
+router.patch('/', patchUser);
 
 router.delete('/:id', (req,res) => {
 });
