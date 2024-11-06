@@ -27,7 +27,7 @@ body {
 .con {
   box-shadow: inset 2px 2px 5px black;
   background-color: rgba(255, 255, 255, 0.737);
-  width: 23%;
+  width: 370px;
   height: 70%;
   border-radius: 14px;
   display: flex;
@@ -67,6 +67,7 @@ body {
   width: 90%;
   padding: 6px;
   padding-left: 12px;
+  border: 0;
 }
 
 .input::placeholder {
@@ -75,7 +76,7 @@ body {
 
 .inputCon {
   width: 90%;
-  background-color: antiquewhite;
+  background-color: black;
   display: flex;
   justify-content: center;
   justify-self: center;
@@ -92,8 +93,12 @@ body {
   position: relative;
   z-index: 10;
   color: white;
-  right: 24px;
-  margin-right: 10px;
+  right: 5px;
+}
+
+.eyeButton:hover {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.571);
 }
 
 .button {
