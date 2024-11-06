@@ -38,3 +38,14 @@ export const addJoke = async function (setup, punchline, _createdBy = null) {
     console.log("from the data center:", error);
   }
 };
+
+export const addUser = async function(user){
+    try{
+        const reply = await axios.post(`${serverAddress}/api/users/single`,{
+            user: user
+        })
+        console.log("reply:", reply);
+    } catch(error){
+        console.log('from dataTest', error);
+    }
+}

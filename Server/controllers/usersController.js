@@ -1,4 +1,5 @@
 import User from '../models/userModel.js';
+import bcrypt from 'bcrypt';
 
 export const getUserById = async function(req, res, next){
     try{
@@ -22,16 +23,18 @@ export const getAllUsers = async function(req, res, next){
     }
 }
 
+//expects a body that looks like { user: {name: "...", email: "...", password: "..."} }
 export async function addUser(req, res,  next){
     try{
         const data = req.body.user;
+        const hashedPass = await bcrypt.hash(data.password, 10);
         const user = new User({
-            name:data.name,
+            username:data.username,
             email:data.email,
-            password:data.password
+            password:hashedPass
         });
         const newUser = await user.save();
-        res.status(201).json(newUser);
+        res.status(201).json({ mongoMessage: newUser});
         next();
     } catch(error){
         next(error);
@@ -53,7 +56,7 @@ export async function patchUser(req, res, next){
     try{
         const newUser = req.body.user;
         const user = await User.findById(req.body.user._id);
-        if(newUser.name) user.name = newUser.name;
+        if(newUser.username) user.username = newUser.username;
         if(newUser.password) user.password = newUser.password;
         if(newUser.email) user.email = newUser.email;
         const result = await user.save();
@@ -70,6 +73,17 @@ export const deleteUserById = async function(req, res, next){
         res.json({message:"delete successful", reply});
         next();
     } catch(error){
+        next(error);
+    }
+}
+
+export const validateLogin = async function(req, res, next){
+    try{
+        const user = req.body.user;
+        const storedUser = await User.findOne({username: user.username});
+        const isValid = bcrypt.compareSync(user.password, storedUser.username);
+        res.json({isValid});
+    } catch (error){
         next(error);
     }
 }
