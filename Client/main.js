@@ -1,4 +1,4 @@
-import { getJokes, deleteJoke } from "./dataCenter.js";
+import { getJokes, deleteJoke, addJoke } from "./dataCenter.js";
 
 const elSetupInput = document.querySelector(".setup");
 const elPunchLineInput = document.querySelector(".punchline");
@@ -20,7 +20,7 @@ const renderJokes = (jokes) => {
     const jokeSetup = document.createElement("li");
     jokeSetup.textContent = `Punchline: ${joke.punchline}`;
     const jokePunchline = document.createElement("li");
-    jokePunchline.textContent = joke.setup;
+    jokePunchline.textContent = `Setup: ${joke.setup}`;
     const deleteBtn = document.createElement("button");
     deleteBtn.textContent = "Delete";
     deleteBtn.classList.add("delete-btn");
@@ -43,4 +43,14 @@ const renderJokes = (jokes) => {
 renderJokes(jokes);
 document.addEventListener("DOMContentLoaded", () => {
   renderJokes();
+});
+
+elCreateBtn.addEventListener("click", async () => {
+  const setup = elSetupInput.value;
+  const punchline = elPunchLineInput.value;
+  const data = await addJoke(setup, punchline);
+  console.log(data);
+  jokes = await getJokes();
+  jokes = jokes.jokes;
+  renderJokes(jokes);
 });
