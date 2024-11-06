@@ -12,6 +12,18 @@ export const getJokes = async function () {
   }
 };
 
+export const getJokesByUser = async function(id){
+    try {
+        let jokes = await fetch(`${serverAddress}/api/jokes`);
+    
+        jokes = await jokes.json();
+    
+        return jokes;
+    } catch (error) {
+        console.log("from the data center:", error);
+    }
+}
+
 export const deleteJoke = async function (id) {
   try {
     const result = await axios.delete(`${serverAddress}/api/jokes/byId/${id}`);
