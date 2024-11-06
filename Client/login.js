@@ -1,3 +1,6 @@
+import { getUsers } from "./dataCenter.js";
+const serverAddress = "http://localhost:3000";
+
 const logButton = document.getElementById("logButton");
 const signButton = document.getElementById("signButton");
 const changeButton = document.querySelector(".changeButton");
@@ -6,10 +9,6 @@ const signCon = document.getElementById("signCon");
 const hl2 = document.getElementById("hl2");
 const hl1 = document.getElementById("hl1");
 const changePage = document.querySelector(".changePage");
-
-const passwordIn = document.getElementById("passwordInput");
-const passwordIn2 = document.getElementById("passwordInput2");
-const passwordInVer = document.getElementById("passwordVerInput");
 
 signCon.style.display = "flex";
 logCon.style.display = "none";
@@ -60,9 +59,82 @@ signButton.addEventListener("click", () => {
   };
   console.log(user);
 
+  postUserData(user);
   //   clear all fields
   document.getElementById("userNameInput").value = "";
   document.getElementById("passwordInput").value = "";
   document.getElementById("passwordVerInput").value = "";
   document.getElementById("emailInput").value = "";
 });
+
+// password showing
+document.addEventListener("DOMContentLoaded", () => {
+  const passwordIn = document.getElementById("passwordInput");
+  const passwordIn2 = document.getElementById("passwordInput2");
+  const passwordInVer = document.getElementById("passwordVerInput");
+
+  const eye1 = document.getElementById("eye1");
+  const eye2 = document.getElementById("eye2");
+  const eye3 = document.getElementById("eye3");
+
+  function togglePasswordVisibility1() {
+    if (passwordIn) {
+      passwordIn.type = passwordIn.type === "password" ? "text" : "password";
+      console.log("Toggling visibility for passwordInput");
+    }
+  }
+
+  function togglePasswordVisibility2() {
+    if (passwordIn2) {
+      passwordIn2.type = passwordIn2.type === "password" ? "text" : "password";
+      console.log("Toggling visibility for passwordInput2");
+    }
+  }
+
+  function togglePasswordVisibility3() {
+    if (passwordInVer) {
+      passwordInVer.type =
+        passwordInVer.type === "password" ? "text" : "password";
+      console.log("Toggling visibility for passwordVerInput");
+    }
+  }
+
+  // Add event listeners
+  if (eye1) eye1.addEventListener("click", togglePasswordVisibility1);
+  if (eye3) eye3.addEventListener("click", togglePasswordVisibility2);
+  if (eye2) eye2.addEventListener("click", togglePasswordVisibility3);
+});
+
+const data = await getUsers();
+console.log(data);
+
+// async function postUserData(user) {
+//   const options = {
+//     method: "POST",
+//     headers: {
+//       Accept: "application/json",
+//     },
+//     body: JSON.stringify(user),
+//   };
+
+//   const response = await fetch(
+//     "http://localhost:3000/api/users/single",
+//     options
+//   );
+//   if (!response.ok) throw new Error("Network response was not ok");
+//   return await response.json();
+// }
+
+const postUserData = async function (user) {
+  try {
+    const body = {
+      user: user,
+    };
+
+    const result = await axios.post(`${serverAddress}/api/users/single`, body);
+
+    return result;
+  } catch (error) {
+    console.log("from the data center:", error);
+  }
+};

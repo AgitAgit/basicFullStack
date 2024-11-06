@@ -38,3 +38,15 @@ export const addJoke = async function (setup, punchline, _createdBy = null) {
     console.log("from the data center:", error);
   }
 };
+
+export const getUsers = async function () {
+  try {
+    let users = await fetch(`${serverAddress}/api/users`);
+
+    users = await users.json();
+
+    return users;
+  } catch (error) {
+    console.log("from the data center:", error);
+  }
+};
