@@ -32,17 +32,18 @@ export const getJokes = async (req, res, next) => {
 }
 
 export const getJokesByUser = async (req, res, next) => {//not done
-    // try{
-    //     const jokes = await Joke.find();
-    //     // console.log("@ss");
-    //     // console.log(jokes);
-    //     res.body = {};
-    //     res.body.jokes = jokes;
-    //     res.body.test = "test test test"
-    //     next();
-    // } catch (error){
-    //     next(error);
-    // }
+    try{
+        const id = req.params.id;
+        const jokes = await Joke.find({ _id:id });
+        // console.log("@ss");
+        console.log(jokes);
+        res.body = {};
+        res.body.jokes = jokes;
+        res.body.test = "test test test"
+        next();
+    } catch (error){
+        next(error);
+    }
 }
 
 export const getJokesWithCreator = async function(req, res, next){

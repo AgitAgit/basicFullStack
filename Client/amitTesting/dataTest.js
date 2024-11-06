@@ -1,18 +1,20 @@
-import { getJokes, deleteJoke, addJoke, addUser, isValidUser } from './dataMethods.js';
+import { getJokes, deleteJoke, addJoke, addUser, isValidUser, getJokesByUser } from './dataMethods.js';
 
 //67234ab370fe1388b302eb6b buffalo joke id
 
-// let data = await getJokes(); 
+//6727b218559bb528f3ec43a4 default user id
 
-// console.log(data);
+let data = await getJokes(); 
+
+console.log("jokes", data);
 
 // let result = await addJoke('testing client add joke 1','testing client add joke 1');
 
 // console.log(result);
 
-// data = await getJokes(); 
+data = await getJokesByUser('6727b218559bb528f3ec43a4'); 
 
-// console.log(data);
+console.log("jokes by user:", data);
 
 const user3 = {
     username:'test 3 adding user with password hashing',
@@ -21,5 +23,5 @@ const user3 = {
 }
 // addUser(user3);
 
-const result = await isValidUser(user3);
-console.log("result", result);
+// let result = await isValidUser(user3);
+// console.log("result", result);

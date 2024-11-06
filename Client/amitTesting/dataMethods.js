@@ -14,7 +14,7 @@ export const getJokes = async function () {
 
 export const getJokesByUser = async function(id){
     try {
-        let jokes = await fetch(`${serverAddress}/api/jokes`);
+        let jokes = await fetch(`${serverAddress}/api/jokes/${id}`);
     
         jokes = await jokes.json();
     

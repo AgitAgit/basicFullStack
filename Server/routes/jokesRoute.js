@@ -2,7 +2,6 @@ import express from 'express';
 // import fs from 'fs';
 import Joke from '../models/jokeModel.js';
 import { getJoke, getJokes, getIdsByContent, addJoke, getJokesWithCreator, getJokesByUser } from '../controllers/jokesController.js';
-import { getJokesByUser } from '../../Client/amitTesting/dataMethods.js';
 
 const router = express.Router();
 
@@ -16,7 +15,7 @@ router.get('/byid/:id', getJoke, (req, res) =>{
     }
 });
 
-router.get('/byUser/:id', getJokesByUser);
+router.get('/byUserId/:id', getJokesByUser);
 
 router.get('/', getJokes, (req, res) => {
     try{
