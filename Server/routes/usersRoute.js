@@ -1,6 +1,6 @@
 import express from 'express';
 import jwt from 'jsonwebtoken';
-import { getAllUsers, addUser, patchUser, addUsers, getUserById } from '../controllers/usersController.js';
+import { getAllUsers, addUser, patchUser, addUsers, getUserById, validateLogin } from '../controllers/usersController.js';
 
 const router = express.Router();
 
@@ -14,6 +14,10 @@ router.get('/:id', getUserById);
 router.post('/single', addUser);
 
 router.post('/many', addUsers);
+
+//expects a body of the form { user: {name: "...", email: "...", password: "..."} }
+//return an object of the form { isValid:true/false }
+router.post('/validate', validateLogin);
 
 router.patch('/', patchUser,(req, res) => {
 })

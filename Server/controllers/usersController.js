@@ -79,7 +79,10 @@ export const deleteUserById = async function(req, res, next){
 
 export const validateLogin = async function(req, res, next){
     try{
-
+        const user = req.body.user;
+        const storedUser = await User.findOne({username: user.username});
+        const isValid = bcrypt.compareSync(user.password, storedUser.username);
+        res.json({isValid});
     } catch (error){
         next(error);
     }
