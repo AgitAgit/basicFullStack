@@ -13,3 +13,20 @@ console.log(result);
 data = await getJokes(); 
 
 console.log(data);
+
+const serverAddress = 'http://localhost:3000';
+async function addUser(user){
+    try{
+        const reply = await axios.post(`${serverAddress}/api/users/single`,{
+            user: user
+        })
+        console.log("reply:", reply);
+    } catch(error){
+        console.log('from dataTest', error);
+    }
+}
+addUser({
+    username:'test adding user with password hashing',
+    password:'12341234',
+    email:'abc@example.com'
+});

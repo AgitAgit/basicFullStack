@@ -27,7 +27,7 @@ export const getAllUsers = async function(req, res, next){
 export async function addUser(req, res,  next){
     try{
         const data = req.body.user;
-        const hashedPass = bcrypt.hash(data.password, 10);
+        const hashedPass = await bcrypt.hash(data.password, 10);
         const user = new User({
             username:data.username,
             email:data.email,
