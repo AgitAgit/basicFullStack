@@ -1,35 +1,40 @@
 const serverAddress = "http://localhost:3000";
 
 export const getJokes = async function () {
-  console.log("test test");
-  let jokes = await fetch(`${serverAddress}/api/jokes`);
+  try{
+    let jokes = await fetch(`${serverAddress}/api/jokes`);
 
-  jokes = await jokes.json();
+    jokes = await jokes.json();
 
-  // console.log("jokes:", jokes);
-
-  return jokes;
+    return jokes;
+  } catch(error){
+    console.log("from the data center:", error)
+  }
 };
 
 export const deleteJoke = async function (id) {
-  const result = await axios.delete(`${serverAddress}/api/jokes/byId/${id}`);
+    try{
+        const result = await axios.delete(`${serverAddress}/api/jokes/byId/${id}`);
 
-  // const jsonResult = await result.json();
-
-  // console.log("result:", result);
-
-  return result;
+        return result;
+    } catch(error){
+        console.log("from the data center:", error)
+    }
 };
 
 export const addJoke = async function (setup, punchline, _createdBy = null) {
-  const body = {
-    setup: setup,
-    punchline: punchline,
-  };
+  try{
+        const body = {
+            setup: setup,
+            punchline: punchline,
+        };
 
-  if (_createdBy) body.createdBy = _createdBy;
-
-  const result = await axios.post(`${serverAddress}/api/jokes/single`, body);
-
-  return result;
+        if (_createdBy) body.createdBy = _createdBy;
+  
+        const result = await axios.post(`${serverAddress}/api/jokes/single`, body);
+  
+        return result;
+    } catch(error){
+        console.log("from the data center:", error)
+    }
 };

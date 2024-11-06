@@ -1,7 +1,4 @@
-import { getJokes } from "./dataCenter.js";
-
-const data = await getJokes();
-console.log(data);
+import { getJokes, deleteJoke } from "./dataCenter.js";
 
 const elSetupInput = document.querySelector(".setup");
 const elPunchLineInput = document.querySelector(".punchline");
@@ -10,4 +7,40 @@ const elCreateBtn = document.querySelector(".create-btn");
 
 const elForm = document.getElementById("add-form");
 
-const renderJokes = () => {};
+let jokes = await getJokes();
+jokes = jokes.jokes;
+console.log(jokes);
+
+const renderJokes = (jokes) => {
+  const elJokesContainer = document.querySelector(".jokes-container");
+  elJokesContainer.innerHTML = "";
+  jokes.forEach((joke) => {
+    const jokeElement = document.createElement("ul");
+    jokeElement.classList.add("each-joke");
+    const jokeSetup = document.createElement("li");
+    jokeSetup.textContent = `Punchline: ${joke.punchline}`;
+    const jokePunchline = document.createElement("li");
+    jokePunchline.textContent = joke.setup;
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "Delete";
+    deleteBtn.classList.add("delete-btn");
+
+    elJokesContainer.appendChild(jokeElement);
+    jokeElement.appendChild(jokeSetup);
+    jokeElement.appendChild(jokePunchline);
+    jokeElement.appendChild(deleteBtn);
+
+    deleteBtn.addEventListener("click", async () => {
+      const result = await deleteJoke(joke._id);
+      jokes = await getJokes();
+      jokes = jokes.jokes;
+      console.log(result);
+      renderJokes(jokes);
+    });
+  });
+};
+
+renderJokes(jokes);
+document.addEventListener("DOMContentLoaded", () => {
+  renderJokes();
+});
