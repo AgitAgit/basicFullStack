@@ -34,7 +34,7 @@ export async function addUser(req, res,  next){
             password:hashedPass
         });
         const newUser = await user.save();
-        res.status(201).json(newUser);
+        res.status(201).json({ mongoMessage: newUser});
         next();
     } catch(error){
         next(error);
