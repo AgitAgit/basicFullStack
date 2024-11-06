@@ -8,17 +8,15 @@ router.get('/', getAllUsers, (req, res) => {
     res.send(res.body);
 });
 
-router.get('/:id', getUserById,(req, res) =>{
-});
+router.get('/:id', getUserById);
 
 router.post('/single', (req, res) => {
-    if(req.body.user) {
+    if(req.body.user) {//temporary for testing. later I will activate the controller function instead.
         res.json({message: "you successfully accessed the add single user route!", data:req.body.user});
     }
 });
 
-router.post('/many', addUsers, (req, res) => {
-});
+router.post('/many', addUsers);
 
 router.patch('/', patchUser,(req, res) => {
 })
