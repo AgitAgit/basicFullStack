@@ -73,6 +73,29 @@ body {
   color: rgba(255, 255, 255, 0.645);
 }
 
+.inputCon {
+  width: 90%;
+  background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+  align-items: center;
+}
+
+#passwordInput2,
+#passwordVerInput,
+#passwordInput {
+  width: 100%;
+}
+
+.eyeButton {
+  position: relative;
+  z-index: 10;
+  color: white;
+  right: 24px;
+  margin-right: 10px;
+}
+
 .button {
   width: 100px;
   border-radius: 25px;

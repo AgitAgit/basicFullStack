@@ -34,3 +34,35 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
+signButton.addEventListener("click", () => {
+  // Collect form data
+  const username = document.getElementById("userNameInput").value.trim();
+  const password = document.getElementById("passwordInput").value.trim();
+  const passwordVer = document.getElementById("passwordVerInput").value.trim();
+  const email = document.getElementById("emailInput").value.trim();
+
+  if (!username || !email || !password || !passwordVer) {
+    alert("Please fill in all fields.");
+    return;
+  }
+  // Check if passwords match
+  if (password !== passwordVer) {
+    alert("Passwords do not match!");
+    return;
+  }
+
+  // Prepare data to send in POST request
+  const user = {
+    username: username,
+    password: password,
+    email: email,
+  };
+  console.log(user);
+
+  //   clear all fields
+  document.getElementById("userNameInput").value = "";
+  document.getElementById("passwordInput").value = "";
+  document.getElementById("passwordVerInput").value = "";
+  document.getElementById("emailInput").value = "";
+});
