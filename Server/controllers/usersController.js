@@ -1,4 +1,5 @@
 import User from '../models/userModel.js';
+import bcrypt from 'bcrypt';
 
 export const getUserById = async function(req, res, next){
     try{
@@ -22,13 +23,15 @@ export const getAllUsers = async function(req, res, next){
     }
 }
 
+//expects a body that looks like { user: {name: "...", email: "...", password: "..."} }
 export async function addUser(req, res,  next){
     try{
         const data = req.body.user;
+        const hashedPass = bcrypt.hash(data.password, 10);
         const user = new User({
             name:data.name,
             email:data.email,
-            password:data.password
+            password:hashedPass
         });
         const newUser = await user.save();
         res.status(201).json(newUser);
@@ -70,6 +73,14 @@ export const deleteUserById = async function(req, res, next){
         res.json({message:"delete successful", reply});
         next();
     } catch(error){
+        next(error);
+    }
+}
+
+export const validateLogin = async function(req, res, next){
+    try{
+
+    } catch (error){
         next(error);
     }
 }
