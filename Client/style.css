@@ -55,13 +55,14 @@ input{
    
         width: 100%;
         padding: 0.4rem;
-        margin: 0.7rem 0;
+        margin: 0.2rem 0;
         box-sizing: border-box;
         border: 2px solid #6c6b6b;
         border-radius: 6px;
         outline: none; 
 }
 button {
+    margin: 0.2rem 0;
     background-color: black;
     color: aliceblue;
     padding: 0.5rem 1rem;
