@@ -16,7 +16,7 @@ router.post('/single', addUser);
 
 router.post('/many', addUsers);
 
-//expects a body of the form { user: {name: "...", email: "...", password: "..."} }
+//expects a body of the form { user: {username: "...", email: "...", password: "..."} }
 //sends back an object of the form { isValid:true/false }
 router.post('/validate', validateLogin);
 
