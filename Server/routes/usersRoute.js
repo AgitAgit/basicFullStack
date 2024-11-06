@@ -11,7 +11,10 @@ router.get('/', getAllUsers, (req, res) => {
 router.get('/:id', getUserById,(req, res) =>{
 });
 
-router.post('/single', addUser, (req, res) => {
+router.post('/single', (req, res) => {
+    if(req.body.user) {
+        res.json({message: "you successfully accessed the add single user route!", data:req.body.user});
+    }
 });
 
 router.post('/many', addUsers, (req, res) => {
