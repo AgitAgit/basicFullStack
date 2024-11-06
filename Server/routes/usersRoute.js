@@ -11,11 +11,7 @@ router.get('/', getAllUsers, (req, res) => {
 router.get('/:id', getUserById);
 
 //expects a body of the form { user: {name: "...", email: "...", password: "..."} }
-router.post('/single', (req, res) => {
-    if(req.body.user) {//temporary for testing. later I will activate the controller function instead.
-        res.json({message: "you successfully accessed the add single user route!", data:req.body.user});
-    }
-});
+router.post('/single', addUser);
 
 router.post('/many', addUsers);
 
