@@ -10,7 +10,7 @@ router.get('/', getAllUsers, (req, res) => {
 
 router.get('/:id', getUserById);
 
-//expects a body of the form { user: {name: "...", email: "...", password: "..."} }
+//expects a body of the form { user: {username: "...", email: "...", password: "..."} }
 router.post('/single', addUser);
 
 router.post('/many', addUsers);

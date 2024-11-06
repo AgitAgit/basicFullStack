@@ -29,7 +29,7 @@ export async function addUser(req, res,  next){
         const data = req.body.user;
         const hashedPass = bcrypt.hash(data.password, 10);
         const user = new User({
-            name:data.name,
+            username:data.username,
             email:data.email,
             password:hashedPass
         });
@@ -56,7 +56,7 @@ export async function patchUser(req, res, next){
     try{
         const newUser = req.body.user;
         const user = await User.findById(req.body.user._id);
-        if(newUser.name) user.name = newUser.name;
+        if(newUser.username) user.username = newUser.username;
         if(newUser.password) user.password = newUser.password;
         if(newUser.email) user.email = newUser.email;
         const result = await user.save();
